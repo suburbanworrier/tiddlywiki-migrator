@@ -3,11 +3,13 @@
   "version": "1.0.0",
   "description": "Export tiddlers from a single-file html TiddlyWiki, \"classic\" or \"modern\", to Markdown.",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "export": "make",
+    "convert": "make && make convert",
+    "clean": "make clean"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/davidag/tiddlywiki-migrator.git"
+    "url": "https://github.com/davidag/tiddlywiki-migrator.git"
   },
   "keywords": [
     "tiddlywiki",

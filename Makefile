@@ -30,12 +30,12 @@ MARKDOWN_TIDDLERS := $(patsubst $(TW_OUTPUT_DIR)/%.html, \
 .PHONY: export-html
 export-html : deps pre
 	@echo "Exporting all tiddlers from $(ORIGINAL_TIDDLYWIKI) to html"
-	$(NODEJS) $(TIDDLYWIKI_JS) $(WIKI_NAME) --load $(ORIGINAL_TIDDLYWIKI) \
+	"$(NODEJS)" $(TIDDLYWIKI_JS) $(WIKI_NAME) --load $(ORIGINAL_TIDDLYWIKI) \
         --render [!is[system]] [encodeuricomponent[]addsuffix[.html]] \
         --render [!is[system]] [encodeuricomponent[]addsuffix[.meta]] \
             text/plain $$:/core/templates/tiddler-metadata
 	@echo "Renaming all .html and .meta files to safe characters..."
-	$(NODEJS) $(SAFE_RENAME_JS) $(TW_OUTPUT_DIR)
+	"$(NODEJS)" $(SAFE_RENAME_JS) $(TW_OUTPUT_DIR)
 
 .PHONY: deps
 deps :
@@ -64,13 +64,13 @@ $(ORIGINAL_TIDDLYWIKI) :
 
 $(TIDDLYWIKI_JS) :
 	@echo "Installing TiddlyWiki..."
-	$(NPM) install tiddlywiki
+	"$(NPM)" install tiddlywiki
  
 $(TIDDLYWIKI_INFO) : $(TIDDLYWIKI_JS)
 	@echo "Setting up temporary wiki..."
-	$(NODEJS) $(TIDDLYWIKI_JS) $(WIKI_NAME) --init empty
-	$(NODEJS) $(ADD_PLUGIN_JS) $(TIDDLYWIKI_INFO) tiddlywiki/tw2parser
-	$(NODEJS) $(ADD_PLUGIN_JS) $(TIDDLYWIKI_INFO) tiddlywiki/markdown
+	"$(NODEJS)" $(TIDDLYWIKI_JS) $(WIKI_NAME) --init empty
+	"$(NODEJS)" $(ADD_PLUGIN_JS) $(TIDDLYWIKI_INFO) tiddlywiki/tw2parser
+	"$(NODEJS)" $(ADD_PLUGIN_JS) $(TIDDLYWIKI_INFO) tiddlywiki/markdown
 
 .PHONY: convert
 convert : $(MARKDOWN_DIR) $(MARKDOWN_TIDDLERS)

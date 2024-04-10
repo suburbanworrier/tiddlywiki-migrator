@@ -13,13 +13,17 @@ TiddlyWiki Migrator is a set of scripts put together to automate the migration f
 ## Usage
 
 1. Clone this repository.
-2. Copy your single-file html TiddlyWiki (2 or 5) in your cloned repository.
-3. Rename your TW html to `wiki.html`
-4. Export your tiddlers:
+2. Run `npm install` to install tiddlywiki dependency.
+3. Copy your single-file html TiddlyWiki (2 or 5) in your cloned repository.
+4. Rename your TW html to `wiki.html`
+5. Export your tiddlers:
+
 ```
 $ make
 ```
-5. Convert all your tiddlers to Markdown:
+
+6. Convert all your tiddlers to Markdown:
+
 ```
 $ make convert
 ```
@@ -73,3 +77,13 @@ Markdown files usually end with the .md extension and follow the Markdown text f
 ### Where can I read more about the process of building this script?
 
 I wrote [a post](https://davidalfonso.es/posts/tiddlywiki-to-markdown) with some more detail.
+
+### Windows users
+
+Use [Chocolatey](https://chocolatey.org/install) to provide the underlying dependencies:
+
+Make `choco install make` 
+
+Pandoc `choco install pandoc --ia=ALLUSERS=1`
+
+Many other options available at [Pandoc](https://pandoc.org/installing.html#windows)
